@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="relationToNotes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Notes" inverseName="relationToCategory" inverseEntity="Notes"/>
+    </entity>
+    <entity name="Images" representedClassName="Images" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id_notes" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="relationToNotes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notes" inverseName="relationToImages" inverseEntity="Notes"/>
+    </entity>
+    <entity name="Notes" representedClassName="Notes" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id_category" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="relationToCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="relationToNotes" inverseEntity="Category"/>
+        <relationship name="relationToImages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Images" inverseName="relationToNotes" inverseEntity="Images"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="-475.4140625" positionY="-439.25390625" width="128" height="88"/>
+        <element name="Images" positionX="-105.328125" positionY="-439.37109375" width="128" height="103"/>
+        <element name="Notes" positionX="-290.1328125" positionY="-484.5390625" width="128" height="148"/>
+    </elements>
+</model>
